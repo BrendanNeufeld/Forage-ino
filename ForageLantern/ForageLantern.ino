@@ -140,6 +140,7 @@ void loop() {
       RFduinoBLE.sendFloat(strength);
     }
   }else{
+    strength = 10;
     RFduinoBLE.sendFloat(distance); 
   }
   /*if(collecting == true){
@@ -177,8 +178,10 @@ void RFduinoBLE_onConnect()
 
 void RFduinoBLE_onDisconnect()
 {
-  digitalWrite(led, LOW);
   collecting = false;
+  strength = 10;
+  digitalWrite(led, LOW);
+  
 }
 
 // returns the dBm signal strength indicated by the receiver
